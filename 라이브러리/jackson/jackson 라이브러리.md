@@ -8,10 +8,10 @@ Jackson에는 3가지 핵심 라이브러리(`core`, `databind`, `annotations`) 
 
 ## jackson-core
 
-모든 jackson 라이브러리들의 공통 동작을 관리한다. `annotations`와 `databind`는 core 라이브러리에 모두 의존적이다. 객체 -> Json , Json -> 객체 모든 매핑에 관련된 동작을 수행하는건 사실 이 core 라이브러리가 있기 때문에 가능한 것이다. 주요 클래스로는 `JsonToken`, `JsonParser`, `JsonFactory`, `JsonGenerator` 등이 있다.
+모든 jackson 라이브러리들의 공통 동작을 관리한다. `annotations`와 달리 `databind`는 core 라이브러리에 의존적이다. 객체 -> JSON , JSON -> 객체 모든 매핑에 관련된 동작을 수행하는건 사실 이 core 라이브러리가 있기 때문에 가능한 것이다. 주요 클래스로는 `JsonToken`, `JsonFactory`,  `JsonParser`, `JsonGenerator` 등이 있다.
 
 ### JsonToken
-Enum 클래스로 Json의 컨텐츠를 만드는 문자열 모음이라고 할 수 있겠다. `{`,`}`, `[`, `]` 등의 문자들이 열거형으로 관리된다. 
+Enum 클래스로 Json의 컨텐츠를 만드는 문자열 모음이라고 할 수 있겠다. `{`,`}`, `[`, `]` 등의 문자들이 열거형으로 관리된다. 필드명 그리고 필드의 값이 문자형인지 숫자형인지 boolean 값인지를 구분할 수 있는 이유가 `JsonToken`이 있기 때문이다.
 ```java
 // Object의 시작 값을 알리는 { 를 반환
 START_OBJECT("{", JsonTokenId.ID_START_OBJECT),  
@@ -30,7 +30,7 @@ END_ARRAY("]", JsonTokenId.ID_END_ARRAY)
 ```
 
 ### JsonFactory
-`JsonGenerator`와 `JsonParser`를 생성하는 팩토리 클래스이고, Jackson core의 진입점이다. `ObjectMapper`가 내부적으로 `JsonFactory`를 사용한다. `JsonFactoryBuilder` 를 사용하여 builder 패턴으로도 사용할 수 있다. 2.10 버전 이후부터는 builder 방식을 더 권고한다.
+`JsonGenerator`와 `JsonParser`를 생성하는 팩토리 클래스이고, jackson core의 진입점이다. `ObjectMapper`가 내부적으로 `JsonFactory`를 사용한다. `JsonFactoryBuilder` 를 사용하여 builder 패턴으로도 사용할 수 있다. 2.10 버전 이후부터는 builder 방식을 더 권고한다.
 
 ```kotlin
 
@@ -49,7 +49,7 @@ val generator = factory.createGenerator(ByteArrayOutputStream(), JsonEncoding.UT
 
 
 ### JsonGenerator
-Json을 만드는 구현체다. 
+JSON을 만드는 구현체다. 
 ```kotlin
 val factory = JsonFactoryBuilder().build()  
   
@@ -69,7 +69,7 @@ println(output.toString()) // {"name":"Gwangho","age":30}
 ```
 
 ### JsonParser
-Json을 스트리밍 방식으로 읽을 때 사용하는 구현체다.
+JSON을 스트리밍 방식으로 읽을 때 사용하는 구현체다.
 ```kotlin
 val parser = factory.createParser("""{"name":"Gwangho","age":30}""")  
   
@@ -90,6 +90,22 @@ while (parser.nextToken() != null) {
 */
 ```
  
- 근데 보통 대부분의 경우 `ObjectMapper`를 사용한다. 두 개의 차이점은 `ObjectMapper`는 Json을 읽어 객체를 변환하고 객체는 메모리에 올라가지만 `JsonParser`는 단순히 Json 텍스트를 읽어서 토큰 정보를 읽는 정도다. `JsonParser`를 사용할 경우에는 개발자가 직접 객체를 만들어 줘야한다.
+ `ObjectMapper` 가 내부적으로 `JsonFactory`를 사용하여 JSON 변환 처리를 한다. 이 때, `JsonGenerator`, `JsonParser` 가 호출 된다. 그렇기 때문에 사실 실제로 두 가지를 직접 만지는 경우는 드물다. `ObjectMapper`도 사실 단위 테스트 중에 종종 사용하는 정도인데, 위 두 가지와 차이점이라면 `ObjectMapper`는 JSON을 읽어 객체를 변환하고 객체는 메모리에 올라가지만 `JsonParser`는 단순히 JSON 텍스트를 읽어서 토큰 정보를 읽는 정도다. `JsonParser`를 사용할 경우에는 개발자가 직접 객체를 만들어 줘야한다. core api는 저수준 스트리밍 api 라고도 소개되어 있는데, 대용량 JSON을 메모리 문제로 한 줄 한 줄 처리해야하는 레벨이 아니라면 두 가지는 사실 만날 일이 많지는 않다. 
+
+## jackson-annotaition
+JSON 직렬화/역직렬화를 제어하는 어노테이션 세트로 스프링 개발할 때, 사실 너무나 많이 사용하기 때문에 눈에 대부분은 눈에 익을 것이다. 자주 사용하는 어노테이션들은 아래와 같다.
+
+```kotlin
+@JsonProperty : JSON의 필드명 변경
+@JsonIgnore : JSON 변환에서 제외
+@JsonIgnoreProperties : 알 수 없는 필드 무시
+@JsonIgnore : JSON 변환에서 제외
+@JsonIgnoreProperties: 알 수 없는 필드 무시
+@JsonValue : 직렬화 시 해당 메서드 결과 사용
+@JsonCreator : 직렬화 시 사용할 생성자
+@JsonTypeInfo / @JsonSubTypes : 타입 처리
+@JsonInclude: null 필드 제외
+
+```
 
 ## jackson-databind
