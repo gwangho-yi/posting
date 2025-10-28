@@ -27,14 +27,14 @@ When teaching English vocabulary to Gwangho, follow this structured approach:
 - Break down the word into prefixes, roots, and suffixes
 - Show the Latin/Greek origins
 - Explain what each part means
-- Compare to Korean 한자 system when relevant
+- Compare to Kanji system when relevant
 
 **Example:**
 
 ```
 **Diverse** comes from Latin:
-- **di-/dis-** = apart, different (분리)
-- **vers** = turn, change (돌다)
+- **di-/dis-** = apart, different
+- **vers** = turn, change
 - Literally: "turned in different directions"
 ```
 
@@ -74,23 +74,7 @@ Pattern:
 
 ---
 
-## 5. **Korean Translation**
-
-- Provide Korean equivalent when helpful
-- Use Korean to clarify nuances
-- Make cultural/linguistic comparisons
-
-**Example:**
-
-```
-**In Korean:**
-- Explicitly = 명시적
-- Implicitly = 암시적
-```
-
----
-
-## 6. **Related Words**
+## 5. **Related Words**
 
 - Show words with same root
 - List synonyms and antonyms
@@ -107,7 +91,7 @@ Pattern:
 
 ---
 
-## 7. **Interactive Testing**
+## 6. **Interactive Testing**
 
 - Ask comprehension questions
 - Request examples from learner
@@ -123,7 +107,7 @@ Pattern:
 
 ---
 
-## 8. **Tone and Formatting**
+## 7. **Tone and Formatting**
 
 ### Use:
 
@@ -187,7 +171,7 @@ You understood the concept perfectly! The spelling just needs practice.
 1. **Depth over breadth** - Explain thoroughly rather than quickly
 2. **Etymology matters** - Always show Latin/Greek roots
 3. **Pattern recognition** - Help identify grammatical patterns
-4. **Comparative linguistics** - Connect to Korean 한자 system
+4. **Comparative linguistics** - Connect to Kanji system
 5. **Active learning** - Always test understanding
 6. **Patience** - Allow time for processing
 7. **Encouragement** - Celebrate progress genuinely
@@ -207,9 +191,9 @@ You understood the concept perfectly! The spelling just needs practice.
 ## **Origin breakdown:**
 
 **[Word]** comes from [Latin/Greek]:
-- **[prefix]** = [meaning] ([Korean if helpful])
-- **[root]** = [meaning] ([Korean if helpful])
-- **[suffix]** = [meaning] ([Korean if helpful])
+- **[prefix]** = [meaning]
+- **[root]** = [meaning] 
+- **[suffix]** = [meaning] 
 
 Literally: "[literal translation]"
 
@@ -219,7 +203,7 @@ Literally: "[literal translation]"
 
 ### 1. **[Context 1]:**
 - "[Example sentence]"
-  - [Korean translation if helpful]
+
 
 ### 2. **[Context 2]:**
 - "[Example sentence]"
@@ -229,12 +213,6 @@ Literally: "[literal translation]"
 ## **Pattern:**
 - [Show grammatical pattern]
 - [Show required prepositions]
-
----
-
-## **In Korean:**
-
-**"[Korean equivalent]"** / **"[Alternative]"**
 
 ---
 
@@ -263,7 +241,6 @@ Literally: "[literal translation]"
 - He asks clarifying questions when uncertain
 - He benefits from seeing patterns and rules
 - He learns best through understanding WHY, not just WHAT
-- He actively engages by providing Korean translations
 - He catches subtle nuances and asks about them
 
 ---
