@@ -72,13 +72,36 @@ public class Box<T> { // 제네릭 버전
 }
 ```
 
-오라클 document에는 제네릭 네이밍 컨벤션을 소개한다.
-- E - Element (used extensively by the Java Collections Framework)
-- K - Key
-- N - Number
-- T - Type
-- V - Value
-- S,U,V etc. - 2nd, 3rd, 4th types
+> 오라클 document에는 제네릭 네이밍 컨벤션을 소개한다.
+>  - E - Element (used extensively by the Java Collections Framework)
+> - K - Key
+> - N - Number
+> - T - Type
+> - V - Value
+> - S,U,V etc. - 2nd, 3rd, 4th types
+
+`Box<T>`를 참조하려면 T를 구체적인 값으로 변경하여 제네릭 타입 호출을 실행해야한다.
+`T` 에 `Inteager` 를 인자로 전달하면 된다. String 이나 다른 타입을 지정해도 무관하다.
+이제 이렇게 선언된 제네릭 타입은 String 값을 타입의 값은 설정 할 수 없게 된다.
+```java
+Box<Integer> integerBox;
+```
+
+### 다이아몬드 연산자 
+
+그리고 자바 7버전 이상부터는 선언된 컴파일러가 문맥상 타입의 인자를 판단하거나 추론할 수 있는 경우, 제네릭 클래스의 생성자 호출에 필요한 인자를 `<>` 다이아몬드로 대체 할 수 있다. 
+쉽게 말해 왼쪽에 타입이 있다면 오른쪽에는 타입을 생략해도 된다.```mermaid
+class BankAccount
+    BankAccount : +String owner
+    BankAccount : +Bigdecimal balance
+    BankAccount : +deposit(amount)
+    BankAccount : +withdrawal(amount)
+```
+
+
+```java
+Box<Integer> integerBox = new Box<>();
+```
 
 
 https://docs.oracle.com/javase/tutorial/java/generics/types.html
