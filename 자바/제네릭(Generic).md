@@ -1,7 +1,8 @@
 
 ## 정의
 
-클래스, 인터페이스, 메서드를 정의할 때, 타입(클래스, 인터페이스)을 파라메터로 선언하게 해주는 타입 추상화다. 제네릭을 사용함으로써 얻는 이점은 아래와 같다.
+클래스, 인터페이스, 메서드를 정의할 때, 타입(클래스, 인터페이스)을 파라메터로 선언하게 해주는 타입 추상화다. 한 마디로 타입을 파라메터(매개변수)화 하는 것.
+제네릭을 사용함으로써 얻는 이점은 아래와 같다.
 
  1. 캐스팅이 불필요하다.
 	제네릭 없던 시절에는 저장된 값의 타입을 개발자가 유추해서 타입을 지정해야했다.
@@ -35,7 +36,7 @@
 	 ```
 
 
-## 제네릭 타입
+## 제네릭 타입 (Generic Types)
 
 제네릭 타입은 타입이 매개변수화된 제네릭 클래스나 제네릭 인터페이스를 말한다.
 
@@ -44,7 +45,7 @@
 class name<T1, T2, ..., Tn> { /* ... */ }
 ```
 
-단순하게 Object만 선언된 Box 클래스를 제네릭 타입으로 변경해보겠다.
+단순하게 Object만 선언된 Box 클래스를 제네릭 타입으로 변경해보자.
 ```java
 public class Box {  // 일반 버전
   
@@ -71,9 +72,55 @@ public class Box<T> { // 제네릭 버전
     public T get() { return t; }
 }
 ```
+T를 선언하면 클래스 자체에 어떤 효과를 발휘하는건 아니고 필드와 메서드의 매개변수들의 타입을 T로 지정할 수 있게 된다. 즉, 타입 자체를 매개변수화 할 수 있게 된다. 
+일반적으로 매개변수라고 하면 값이나 함수를 값으로 받아서 사용하지만 제네릭 타입은 타입을 매개변수로 받아서 클래스가 가진 필드나 메서드들의 타입을 지정할 수 있게 된다. 
+```java
+Box<Integer> box = new Box<Integer>();  
+box.set(10);  
+box.set("string"); // 컴파일 에러
+```
+
+그렇다면 static 메서드는 어떨까? 
+사실상 클래스와는 독립적인 static 메서드는 클래스의 타입 파라메터에 영향을 받을까?
+
+## 제네릭 메서드  (Generic Methods)
+메서드 본인이 사용할 타입을 도입부에 적어놓은 메서드를 말한다. 쉽게 말해서 메서드의 반환타입 앞에 타입 파라메터를 적어놓은 메서드를 말한다.
+```java
+public static <P> void print(P p) {  
+    System.out.println(p);  
+}
+```
+클래스와 독립적인 static 메서드는 클래스와는 독립적이기 때문에 메서드 자신이 사용할 타입 파라메터를 별도로 선언해줘야한다.
+
+```java
+public class Util {  
+  
+    public static <K, V> boolean compare(Pair<K, V> p1, Pair<K, V> p2) {  
+        return p1.getKey().equals(p2.getKey())  
+            && p1.getValue().equals(p2.getValue());  
+    }  
+}  
+  
+public class Pair<K, V> {  
+  
+    private K key;  
+    private V value;  
+  
+    public Pair(K key, V value) {  
+        this.key = key;  
+        this.value = value;  
+    }  
+    public void setKey(K key) { this.key = key; }  
+    public void setValue(V value) { this.value = value; }  
+    public K getKey()   { return key; }  
+    public V getValue() { return value; }  
+}
+```
+
+
 
 > 오라클 document에는 제네릭 네이밍 컨벤션을 소개한다.
->  - E - Element (used extensively by the Java Collections Framework)
+> - E - Element (used extensively by the Java Collections Framework)
 > - K - Key
 > - N - Number
 > - T - Type
@@ -90,18 +137,7 @@ Box<Integer> integerBox;
 ### 다이아몬드 연산자 
 
 그리고 자바 7버전 이상부터는 선언된 컴파일러가 문맥상 타입의 인자를 판단하거나 추론할 수 있는 경우, 제네릭 클래스의 생성자 호출에 필요한 인자를 `<>` 다이아몬드로 대체 할 수 있다. 
-쉽게 말해 왼쪽에 타입이 있다면 오른쪽에는 타입을 생략해도 된다.```mermaid
-class BankAccount
-    BankAccount : +String owner
-    BankAccount : +Bigdecimal balance
-    BankAccount : +deposit(amount)
-    BankAccount : +withdrawal(amount)
-```
-
-
-```java
-Box<Integer> integerBox = new Box<>();
-```
+쉽게 말해 왼쪽에 타입이 있다면 오른쪽에는 타입을 생략해도 된다.
 
 
 https://docs.oracle.com/javase/tutorial/java/generics/types.html
