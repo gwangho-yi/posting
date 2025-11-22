@@ -198,6 +198,16 @@ public static void main(String[] args) {
 }
 ```
 
+### 다중 제한
+타입 매개변수는 다중 제한을 걸 수  있다. 이때 `T`는 다중 제한들의 하위 타입이어야하며, 클래스와 인터페이스들을 상위 타입으로 나열한다면 반드시 클래스가 처음에 위치해야한다.
+```java
+class A{}  
+interface B{}  
+interface C{}
+
+class D <T extends A & B & C>{}
+```
+`T`는 `A`, `B`, `C`의 하위 타입이어야하며, `A`는 클래스기 때문에  다중 타입 나열의 가장 첫번째에 위치해야한다.
 
 
 
