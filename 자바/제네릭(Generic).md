@@ -72,13 +72,27 @@ public class Box<T> { // 제네릭 버전
     public T get() { return t; }
 }
 ```
-T를 선언하면 클래스 자체에 어떤 효과를 발휘하는건 아니고 필드와 메서드의 매개변수들의 타입을 T로 지정할 수 있게 된다. 즉, 타입 자체를 매개변수화 할 수 있게 된다. 
+
+`Box<T>`를 참조하려면 T를 구체적인 값으로 변경하여 제네릭 타입 호출을 실행해야한다.
+`T` 에 `Inteager` 를 인자로 전달하면 된다. String 이나 다른 타입을 지정해도 무관하다.
+이제 이렇게 선언된 제네릭 타입은 String 값을 제외한 타입의 값은 설정할 수 없게 된다.
+```java
+Box<Integer> integerBox;
+```
+
+
+T를 선언하면 클래스 자체에 어떤 효과를 발휘하는건 아니고 필드와 메서드의 매개변수들의 타입을 T로 지정할 수 있게 된다. 즉, 타입 자체를 매개변수화할 수 있게 된다. 
 일반적으로 매개변수라고 하면 값이나 함수를 값으로 받아서 사용하지만 제네릭 타입은 타입을 매개변수로 받아서 클래스가 가진 필드나 메서드들의 타입을 지정할 수 있게 된다. 
 ```java
-Box<Integer> box = new Box<Integer>();  
+Box<Integer> box = new Box<>();  
 box.set(10);  
 box.set("string"); // 컴파일 에러
 ```
+
+> [!NOTE] 다이아몬드 연산자 `<>`
+> 그리고 자바 7버전 이상부터는 선언된 컴파일러가 문맥상 타입의 인자를 판단하거나 추론할 수 있는 경우, 제네릭 클래스의 생성자 호출에 필요한 인자를 `<>` 다이아몬드로 대체 할 수 있다. 
+쉽게 말해 왼쪽에 타입이 있다면 오른쪽에는 타입을 생략해도 된다.
+
 
 그렇다면 static 메서드는 어떨까? 
 사실상 클래스와는 독립적인 static 메서드는 클래스의 타입 파라메터에 영향을 받을까?
@@ -117,9 +131,8 @@ public class Pair<K, V> {
 }
 ```
 
-
-
-> 오라클 document에는 제네릭 네이밍 컨벤션을 소개한다.
+> [!NOTE] 네이밍 컨벤션
+>  오라클 document에는 제네릭 네이밍 컨벤션을 소개한다.
 > - E - Element (used extensively by the Java Collections Framework)
 > - K - Key
 > - N - Number
@@ -127,17 +140,68 @@ public class Pair<K, V> {
 > - V - Value
 > - S,U,V etc. - 2nd, 3rd, 4th types
 
-`Box<T>`를 참조하려면 T를 구체적인 값으로 변경하여 제네릭 타입 호출을 실행해야한다.
-`T` 에 `Inteager` 를 인자로 전달하면 된다. String 이나 다른 타입을 지정해도 무관하다.
-이제 이렇게 선언된 제네릭 타입은 String 값을 타입의 값은 설정 할 수 없게 된다.
+
+## 제한된 타입 매개변수 (Bounded Type Parameters)
+때때로 매개변수화 된 타입의 인자를 제한하고 싶은 때가 있을 것이다. 예를 들어, 숫자를 사용하는 메서드가 있다면 `Number`나 하위 클래스들로 범위를 제한하는 것이다. 이때 제한된 타입 매개변수를 사용할 수 있다.
+
+문법은 타입 매개 변수의 이름, `extends` 키워드, 상한 타입을 적는다.
 ```java
-Box<Integer> integerBox;
+public class Box<T> {  
+  
+    private T t;  
+  
+    public void set(T object) {  
+        this.t = object;  
+    }  
+  
+    public <U extends Number> void inspect(U u) {  // Number를 상한 타입으로 제한
+        System.out.println("T: " + t.getClass().getName());  
+        System.out.println("U: " + u.getClass().getName());  
+    }  
+  
+    public T get() {  
+        return t;  
+    }  
+}
+
+public static void main(String[] args) {  
+    Box<Integer> box = new Box<>();  
+      
+    box.set(10);  
+      
+    box.inspect("10"); // 에러  
+}
 ```
 
-### 다이아몬드 연산자 
 
-그리고 자바 7버전 이상부터는 선언된 컴파일러가 문맥상 타입의 인자를 판단하거나 추론할 수 있는 경우, 제네릭 클래스의 생성자 호출에 필요한 인자를 `<>` 다이아몬드로 대체 할 수 있다. 
-쉽게 말해 왼쪽에 타입이 있다면 오른쪽에는 타입을 생략해도 된다.
+또한, 제네릭 타입에서 제한된 타입을 파라메터를 사용한다면, 타입의 경계를 제한했기 때문에 이 제한된 타입이 가진 메서드를 호출할 수 있게 된다.
+
+```java
+public class NaturalNumber<T extends Integer>{  
+  
+    private final T n;  
+  
+    public NaturalNumber(T n) {  
+        this.n = n;  
+    }  
+  
+    public boolean isEven() {  
+        return n.intValue() % 2 == 0;  // Inter
+    }  
+}
+
+public static void main(String[] args) {  
+  
+    NaturalNumber<Number> naturalNumber = new NaturalNumber<>(10.1);  
+    boolean isEven = naturalNumber.isEven();  
+    System.out.println("isEven = " + isEven);  
+}
+```
+
+
+
 
 
 https://docs.oracle.com/javase/tutorial/java/generics/types.html
+
+
