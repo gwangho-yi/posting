@@ -74,3 +74,30 @@ class D <T extends A & B & C>{}
 
 
 ### 제네릭 메서드와 제한된 타입 파라메터
+제한된 타입 파라메터는 제네릭 알고리즘 구현의 핵심이다. 아래 코드는 `T[]`의 요소들이 elem보다 클 때 숫자를 카운팅한다.
+```java
+public static <T> int countGreaterThan(T[] array, T elem) {  
+    int count = 0;  
+    for (T item : array) {  
+        if (item > elem) { // 컴파일 에러  
+            count++;  
+        }  
+    }  
+    return count;  
+}
+```
+비교연산자 `>`는 사실상 원시 타입 int, long, double, char 등을 비교 연산한다.  사실상 타입 자체는 비교를 수행할 수 없는 타입들이 지정될 수 있기 때문에 컴파일러 입장에서는 당연히 에러를 띄울 것이다. 여기서 우리는 제한된 타입 파라메터를 고려할 수 있다
+
+```java
+public static <T extends Comparable<T>> int countGreaterThan(T[] array, T elem) {  
+    int count = 0;  
+    for (T item : array) {  
+        if (item.compareTo(elem) > 0) {  
+            count++;  
+        }  
+    }  
+    return count;  
+}
+```
+
+`Comparable`를 상속하는 타입들, `Interger` 와 같은 숫자 타입 등 비교 가능한 모든 타입들은 `compareTo`로 비교 연산 가능하다. 
