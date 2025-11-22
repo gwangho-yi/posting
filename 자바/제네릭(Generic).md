@@ -209,7 +209,11 @@ class D <T extends A & B & C>{}
 ```
 `T`는 `A`, `B`, `C`의 하위 타입이어야하며, `A`는 클래스기 때문에  다중 타입 나열의 가장 첫번째에 위치해야한다.
 
+더 상세하게 설명하자면, 아래와 같이 다중 제한을 지정했다면 T는 Number와 Comparable을 둘 다 만족해야한다는 것이다.
 
+```java
+<T extends Number & Comparable<T>>
+```
 
 
 https://docs.oracle.com/javase/tutorial/java/generics/types.html
