@@ -43,7 +43,7 @@ public class NaturalNumber<T extends Integer>{
     }  
   
     public boolean isEven() {  
-        return n.intValue() % 2 == 0;  // Inter
+        return n.intValue() % 2 == 0; 
     }  
 }
 
