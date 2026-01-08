@@ -5,39 +5,37 @@ tags:
 ---
 
 
-# Todo
+## Tasks
+```tasks
+(done today) OR (not done)
+hide backlink
 
-- [ ] check box
+filter by function \
+	const now = moment(); \
+	return !task.file.filename.includes(now.format('YYYY-MM-DD'));
+```
 
-
-# Time Tables
-|  time   | do  |
-| :-----: | :-: |
-| 9:00 -  |     |
-|         |     |
-|         |     |
-|         |     |
-|         |     |
-|         |     |
-
-# Tommorow
-- [ ] 
+## TODO
 
 
-# Today Eat
+
+## Tommorow
+
+
+## Today Eat
 
 | time | eat |
 | :--: | :-: |
-| 9:00 |     |
-|      |     |
-|      |     |
+| 아침  |     |
+|  점심  |     |
+|  저녁  |     |
 |      |     |
 |      |     |
 |      |     |
 
 
 
-# Quote
+## Quote
 <% tp.web.daily_quote() %>
 
 
