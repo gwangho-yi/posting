@@ -15,7 +15,6 @@ filter by function \
 	return !task.file.filename.includes(now.format('YYYY-MM-DD'));
 ```
 
-## TODO
 
 
 
