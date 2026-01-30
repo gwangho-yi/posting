@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(claude plugin list:*)",
+      "Bash(if [ -d ~/.claude/plugins ])",
+      "Bash(then ls -la ~/.claude/plugins/)",
+      "Bash(elif [ -d ~/.config/claude/plugins ])",
+      "Bash(then ls -la ~/.config/claude/plugins/)",
+      "Bash(else echo \"Plugins directory not found\")",
+      "Bash(fi)"
+    ]
+  },
+  "enabledPlugins": {
+    "obsidian@obsidian-skills": true
+  }
+}
