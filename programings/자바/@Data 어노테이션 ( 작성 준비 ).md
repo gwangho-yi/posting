@@ -1,0 +1,1 @@
+https://medium.com/mo-zza/data-%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98-%EC%82%AC%EC%9A%A9%ED%95%B4%EC%95%BC-%EB%90%98%EB%82%98-34d04fb23fea

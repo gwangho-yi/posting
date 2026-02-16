@@ -374,3 +374,5 @@ public class ShippingOrder {
 
 - Hibernate 공식 문서: Collections Mapping
 - JPA 2.x 스펙: Collection-valued Association
+
+
