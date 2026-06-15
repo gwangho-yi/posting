@@ -1,0 +1,163 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1781523224067,
+  "projectRoot": "/Users/yi-gwangho/Documents/Obsidian/개인공부",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "books": {
+      "path": "books",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1781523224050,
+      "keyFiles": [
+        "Breaking - 당신이라는 습관을 깨라.md"
+      ]
+    },
+    "common": {
+      "path": "common",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1781523224054,
+      "keyFiles": [
+        "code.md"
+      ]
+    },
+    "daily": {
+      "path": "daily",
+      "purpose": null,
+      "fileCount": 16,
+      "lastAccessed": 1781523224055,
+      "keyFiles": [
+        "2026-01-07(수).md",
+        "2026-01-08(목).md",
+        "2026-01-09(금).md",
+        "2026-01-10(토).md",
+        "2026-01-12(월).md"
+      ]
+    },
+    "english": {
+      "path": "english",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1781523224055,
+      "keyFiles": [
+        "English Teaching Prompt.md"
+      ]
+    },
+    "excalidraw": {
+      "path": "excalidraw",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1781523224056,
+      "keyFiles": [
+        "Drawing 2025-12-31 13.26.27.excalidraw.md",
+        "물류 포워딩 업무 2026-01-05 15.38.39.excalidraw.md"
+      ]
+    },
+    "health": {
+      "path": "health",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1781523224056,
+      "keyFiles": [
+        "글루텐이 우리 몸에 끼치는 악영향.md"
+      ]
+    },
+    "imgs": {
+      "path": "imgs",
+      "purpose": null,
+      "fileCount": 6,
+      "lastAccessed": 1781523224059,
+      "keyFiles": [
+        "Pasted image 20250706150257.png",
+        "Pasted image 20251008183219.png",
+        "Pasted image 20260105161053.png",
+        "Pasted image 20260105164950.png",
+        "Pasted image 20260106104950.png"
+      ]
+    },
+    "private": {
+      "path": "private",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1781523224059,
+      "keyFiles": [
+        "로지앱에서 성장할 수 있는 것들.md"
+      ]
+    },
+    "programings": {
+      "path": "programings",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1781523224060,
+      "keyFiles": []
+    },
+    "templates": {
+      "path": "templates",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1781523224060,
+      "keyFiles": [
+        "daily template.md"
+      ]
+    },
+    "물류 업무": {
+      "path": "물류 업무",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1781523224061,
+      "keyFiles": [
+        "무게 단위.md",
+        "물류 용어 사전.md",
+        "물류 포워딩이란?.md"
+      ]
+    },
+    "차트매매": {
+      "path": "차트매매",
+      "purpose": null,
+      "fileCount": 7,
+      "lastAccessed": 1781523224061,
+      "keyFiles": [
+        "MACD.md",
+        "볼린저밴드.md",
+        "이동평균선.md",
+        "인사이드 캔들과 삼각수렴.md",
+        "차트매매.md"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "programings/CS/동기, 비동기, Bloking, Non-Bloking.md",
+      "accessCount": 2,
+      "lastAccessed": 1781523587477,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}
